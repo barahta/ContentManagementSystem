@@ -10,14 +10,12 @@ const jwt = require("jsonwebtoken");
 router.post('/getusers',
     async (req,res) => {
         try {
-            console.log('im here')
             const connection = mysql.createConnection({
                 host: config.get('host'),
                 user: config.get('user'),
                 password: config.get('password'),
                 database: config.get('database'),
             })
-
             await connection.connect(err => {
                 if (err) {
                     connection.end()

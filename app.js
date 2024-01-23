@@ -18,8 +18,8 @@ app.use(express.json({ extended: true }))
 app.use(express.urlencoded({ extended: true }))
 
 // app.use('/api/auth',require('./routes/auth.routes'))
- app.use('/api/',require('./routes/users.route'))
-
+app.use('/api/',require('./routes/users.route'))
+app.use('/db/',require('./routes/mydays.route'))
 const start = async () => {
     try{
         //const hashPassword = md5('никитин'+'dfgjldfjdfgljdlf55');
