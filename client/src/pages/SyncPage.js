@@ -5,8 +5,9 @@ import MySelect from "../components/MySelect";
 export default function SyncPage(){
     const {loading,error,request,clearError} = useHttp()
 
-    const [usersList,setUsersList] = useState([])
+    const [dataList,setDataList] = useState([])
     const [tablesList,setTableList] = useState([])
+    const [table,setTable] = useState([])
     const url = 'http://localhost:5000'
 
     useEffect(() => {
@@ -20,7 +21,7 @@ export default function SyncPage(){
 
             setTableList(() => {
                 return res.map((tableName, index) => ({
-                    value: index + 1,
+                    value: index+1,
                     label: tableName
                 }))
             })
@@ -28,22 +29,27 @@ export default function SyncPage(){
             console.log('error reading databases')
         }
     }
-    const handleLoadingUsers = async (e) => {
-        const res = await request(url+'/api/getusers','POST')
-        setUsersList(res)
-        console.log(res[0])
+    const handleLoading = async (e) => {
+        const res = await request(url+'/db/getselect','POST',{table})
+        setDataList(res)
+        console.log(res)
+    }
+
+    const handleSelectTable = (set) => {
+        setTable(set.label)
     }
 
     return (
         <div className='sync-box'>
             <div className='left-box'>
                 <div className='control-box'>
-                    <MySelect className='select' options={tablesList}/>
-                    <div onClick={handleLoadingUsers} className='button'>Load users</div>
-                    <div className='button'>Sync users</div>
+                    <MySelect setChange={handleSelectTable} className='select' options={tablesList}/>
+                    <div onClick={handleLoading} className='button'>Load table</div>
+                    <div className='button'>Sync table</div>
                 </div>
             </div>
             <div className='right-box'>
+                {dataList}
             </div>
         </div>
     )

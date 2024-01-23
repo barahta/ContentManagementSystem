@@ -1,12 +1,13 @@
 import Select, { StylesConfig } from 'react-select';
 
-export default function MySelect({options}){
+export default function MySelect({options,setChange}){
 
     return (
         <Select
             className='select'
             options={options}
             placeholder="Select table"
+            onChange={setChange}
             styles={{
                 option: (baseStyles, state) => ({
                     ...baseStyles,
