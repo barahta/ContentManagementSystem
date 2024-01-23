@@ -31,11 +31,8 @@ const start = async () => {
         io.on('connection', (socket) => {
             console.log('a user '+ socket + ' connected');
         });
-
-
-
     }catch (e){
-
+        console.log(e.message)
     }
 }
 
