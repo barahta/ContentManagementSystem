@@ -18,7 +18,7 @@ app.use(express.json({ extended: true }))
 app.use(express.urlencoded({ extended: true }))
 
 // app.use('/api/auth',require('./routes/auth.routes'))
-// app.use('/api/',require('./routes/messages.routes'))
+ app.use('/api/',require('./routes/users.route'))
 
 const start = async () => {
     try{

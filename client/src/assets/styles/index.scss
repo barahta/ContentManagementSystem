@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,600&display=swap');
+
+$GreyColor1:rgba(51, 51, 51, 1);
+$GreyColor2:rgba(180, 180, 180, 1);
+$GreyColor3:rgba(51, 51, 51, 1);
+$TGreyColor1:rgba(0, 0, 0, 0.8);
+$TGreyColor2:rgba(0, 0, 0, 0.2);
+$WhiteColor:rgba(255,255,255,1);
+
+$widthSideBox:240px;
+$paddingSideBox:20px;
+$paddingContent:20px;
+
+a{
+    text-decoration: none;
+    color: $GreyColor2;
+    text-transform: uppercase;
+    font-family: Montserrat, sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgba(240,240,240,1);
+    .App {
+        display: flex;
+        flex-direction: column;
+        height: 100vh; /* Занимает 100% высоты видимой области */
+        .header {
+            background-color: $GreyColor1;
+            color: $WhiteColor;
+            text-align: center;
+            height: 60px;
+            nav{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                height: 100%;
+
+                .logo-box{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: left;
+                    align-items: center;
+                    a{
+                        color: $GreyColor2;
+                        font-size: 1rem;
+                        font-weight: 800;
+                        margin-left: 20px;
+                    }
+                    margin: 0 20px;
+                }
+                .menu-box{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: right;
+                    padding-right: 40px;
+                    a{
+                        color: $GreyColor2;
+                        margin: 0 10px;
+                        padding: 5px;
+                        transition: 0.8s ease;
+                    }a:hover{
+                          background-color: $TGreyColor1;
+                          color: white;
+                      }
+                    margin: 0 20px;
+                }
+            }
+            hr{
+                position: relative;
+                border: none;
+                height: 3px;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                background-color: $GreyColor2;
+                z-index: 10000;
+            }
+        }
+        .container {
+            display: flex;
+            flex: 1;
+            .sidebar {
+                width: $widthSideBox;
+                background-color: $GreyColor1;
+                position: fixed;
+                height: 100%;
+                .nav-left-box{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: left;
+                    align-items: flex-start;
+                    padding-top: 20px;
+                    a{
+                        width: calc(100% - 20px);
+                        padding: 10px 5px 5px 15px;
+                        transition: 0.3s ease-out;
+                    }a:hover{
+                        background-color: $TGreyColor1;
+                        color: white;
+                    }
+                }
+            }
+            .content {
+                width: calc(100% - ($widthSideBox +  $paddingContent));
+                margin-left: $widthSideBox+$paddingContent;
+                flex: 1;
+                padding: $paddingContent;
+            }
+        }
+    }
+}
+
+.sync-box{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    height: 100%;
+    .left-box{
+        width: 20%;
+        .control-box{
+            .button{
+                width: 80%;
+                margin: 0 10px 10px 0;
+                padding: 10px;
+                background-color: $GreyColor1;
+                color: $GreyColor2;
+                border: 3px solid $GreyColor2;
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                font-weight: 600;
+                cursor: pointer;
+                transition: 0.8s ease;
+            }
+            .button:hover{
+                background-color: $TGreyColor1;
+                color: white;
+            }
+        }
+    }
+    .right-box{
+        width: 80%;
+        background-color: $GreyColor1;
+        border: 3px solid $GreyColor2;
+        height: 100%;
+    }
+}
+
+
+
+
