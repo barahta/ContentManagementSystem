@@ -1,0 +1,7 @@
+# Папки
+node_modules/
+public/uploads/  # Если у вас есть папка для загруженных файлов
+config/
+# Файлы
+.env
+.DS_Store
