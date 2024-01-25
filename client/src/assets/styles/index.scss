@@ -10,6 +10,7 @@ $WhiteColor:rgba(255,255,255,1);
 $widthSideBox:240px;
 $paddingSideBox:20px;
 $paddingContent:20px;
+$headerH:60px;
 
 a{
     text-decoration: none;
@@ -26,11 +27,12 @@ body {
         display: flex;
         flex-direction: column;
         height: 100vh; /* Занимает 100% высоты видимой области */
+        max-height: 100%;
         .header {
             background-color: $GreyColor1;
             color: $WhiteColor;
             text-align: center;
-            height: 60px;
+            height: $headerH;
             nav{
                 display: flex;
                 flex-direction: row;
@@ -82,6 +84,7 @@ body {
         .container {
             display: flex;
             flex: 1;
+            max-height: calc(100% - $headerH);
             .sidebar {
                 width: $widthSideBox;
                 background-color: $GreyColor1;
@@ -104,7 +107,7 @@ body {
                 }
             }
             .content {
-                width: calc(100% - ($widthSideBox +  $paddingContent));
+                width: calc(100% - $widthSideBox - $paddingContent*2 - $paddingContent);
                 margin-left: $widthSideBox+$paddingContent;
                 flex: 1;
                 padding: $paddingContent;
@@ -145,9 +148,100 @@ body {
         background-color: $GreyColor1;
         border: 3px solid $GreyColor2;
         height: 100%;
+        max-height: 100%;
+        display: flex;
+        justify-content: left;
+        align-items: flex-start;
+        overflow: hidden;
+        .field{
+            color: $GreyColor2;
+            border: 3px solid $GreyColor2;
+            margin: 20px;
+            padding: 20px;
+            p{
+                margin: 5px;
+                font-size: 0.7rem;
+                font-weight: 600;
+                span{
+                    text-transform: uppercase;
+                }
+            }
+            .m{
+                margin-left: 50px;
+            }
+        }
     }
 }
+::-webkit-scrollbar{
+    width: 8px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #333;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-track{
+    background-color: #f1f1f1;
+    border-radius: 4px;
+}
+.table,.model{
+    display: flex;
+    flex-direction: column;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    max-height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    .row {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid #ddd;
+        .cell {
+            flex: 1;
+            padding: 10px;
+            text-align: left;
+            border-right: 1px solid #ddd;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 200px;
+            color: $GreyColor2;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.8s ease;
+        }
+        .flex{
+            opacity: 1 !important;
+            display: flex !important;
+        }
+        .cellmaxima{
+            position: absolute;
+            display: none;
+            opacity: 0;
+            transition: 0.3s ease;
+            transition-delay: 0.3s;
+            background-color: $GreyColor1;
+            padding:5px;
+            left:40px;
+            bottom: 40px;
+        }
+        .cell.hovered {
+            background-color: #e0e0e0;
+           // white-space: normal;
+            text-overflow: unset;
+        }
+    }
+    .top{
+        border-bottom: 3px solid #ddd;
+    }
+}
+.model{
+    .field{
 
+    }
+}
 
 
 
