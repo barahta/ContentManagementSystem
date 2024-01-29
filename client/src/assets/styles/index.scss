@@ -244,4 +244,43 @@ body {
 }
 
 
+.files {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    .file-list {
+        margin-top: 20px;
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .file-item span {
+            flex-grow: 1;
+        }
+        .file-item button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
 

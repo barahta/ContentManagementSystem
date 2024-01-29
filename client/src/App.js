@@ -6,6 +6,9 @@ import DashboardPage from "./pages/DashboardPage";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import SyncPage from "./pages/SyncPage";
+import FilesPage from "./pages/files/FilesPage";
+
+
 function App() {
   return (
       <DataProvider>
@@ -19,6 +22,7 @@ function App() {
                               <Route path='/' element={<DashboardPage/>} />
                               <Route path='/main' element={<MainPage/>} />
                               <Route path='/sync' element={<SyncPage/>} />
+                              <Route path='/files' element={<FilesPage/>} />
                           </Routes>
                       </main>
                   </div>

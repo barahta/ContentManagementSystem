@@ -74,7 +74,6 @@ router.post('/getselect', async (req, res) => {
                     types[index] = mapMySQLtoPostgreSQL(field.type)
                     if(field.name === 'id') types[index] = types[index] + ', primaryKey:true, autoIncrement:true'
                 });
-                console.log(rows)
                 const req = rows.map(obj => Object.values(obj))
                 return res.status(200).json({req,header,types})
             })

@@ -8,12 +8,13 @@ export default function SyncPage(){
     const [dataList,setDataList] = useState([])
     const [model,setModel] = useState([])
     const [typesModel,setTypesModel] = useState([])
-
+    const [numberRows,setNumberRows] = useState(0)
     const [swch,setSwch] = useState(true)
     const [tablesList,setTableList] = useState([])
     const [table,setTable] = useState([])
     const [hoveredCell, setHoveredCell] = useState(null);
     const url = 'http://localhost:5000'
+
     useEffect(() => {
         const tablesreq = loadingHandler()
         console.log(tablesreq)
@@ -21,7 +22,7 @@ export default function SyncPage(){
 
     const loadingHandler = async () => {
         try{
-            const res = await request('http://localhost:5000/db/gettables','POST')
+            const res = await request(url+'/db/gettables','POST')
             setTableList(() => {
                 return res.map((tableName, index) => ({
                     value: index+1,
@@ -44,7 +45,6 @@ export default function SyncPage(){
         }else{
             setModel(header)
         }
-
         setSwch(true)
         console.log(req)
     }
@@ -72,6 +72,55 @@ export default function SyncPage(){
 
     }
 
+    const handleSyncUsers = async () => {
+        try{
+            const {req} = await request(url+'/sync/users','POST')
+            setDataList(req)
+            setModel(['asdasd'])
+            setSwch(true)
+            setNumberRows(req.length)
+            console.log(req)
+        }catch (e){
+
+        }
+    }
+    const handleSyncObjects = async () => {
+        try{
+            const {req} = await request(url+'/sync/objects','POST')
+            setDataList(req)
+            setModel(['asdasd'])
+            setSwch(true)
+            setNumberRows(req.length)
+            console.log(req)
+        }catch (e){
+
+        }
+    }
+    const handleSyncCompany = async () => {
+        try{
+            const {req} = await request(url+'/sync/company','POST')
+            setDataList(req)
+            setModel(['asdasd'])
+            setSwch(true)
+            console.log(req)
+        }catch (e){
+
+        }
+    }
+
+    const handleSyncTnForUsers = async () => {
+        try{
+            console.log('pred')
+            const {req,header} = await request(url+'/sync/tnforusers','POST')
+            console.log(req)
+            setDataList(req)
+            setModel(header)
+            setNumberRows(req.length)
+            setSwch(true)
+        }catch (e){
+
+        }
+    }
     return (
         <div className='sync-box'>
             <div className='left-box'>
@@ -79,7 +128,12 @@ export default function SyncPage(){
                     <MySelect setChange={handleSelectTable} className='select' options={tablesList}/>
                     <div onClick={handleLoading} className='button'>Load table</div>
                     <div onClick={handleTypes} className='button'>Load model</div>
-                    <div className='button'>Sync table</div>
+                    <div onClick={handleSyncUsers} className='button'>Sync table users</div>
+                    <div onClick={handleSyncObjects} className='button'>Sync table objects</div>
+                    <div onClick={handleSyncCompany} className='button'>Sync table company</div>
+
+
+                    <div>{numberRows}</div>
                 </div>
             </div>
             <div className='right-box'>

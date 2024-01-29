@@ -3,7 +3,7 @@ const {Sequelize, DataTypes} = require('sequelize')
 
 const User = sequelize.define('users',{
     id:{type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
-    tn:{type:DataTypes.INTEGER,unique:true},
+    tn:{type:DataTypes.STRING,unique:true},
     full_name:{type:DataTypes.STRING},
     login:{type:DataTypes.STRING},
     email:{type:DataTypes.STRING},
@@ -24,7 +24,7 @@ const User = sequelize.define('users',{
 })
 const Files = sequelize.define('files',{
     id:{type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
-    name:{type:DataTypes.INTEGER},
+    name:{type:DataTypes.STRING},
     type:{type:DataTypes.STRING},
     size:{type:DataTypes.STRING},
     access_link:{type:DataTypes.STRING},
@@ -350,10 +350,10 @@ const Days = sequelize.define('days',{
     total:{type:DataTypes.STRING},
     tn:{type:DataTypes.STRING}
 })
-const NumberObjects = sequelize.define('number_objects',{
+const Objects = sequelize.define('objects',{
     id:{type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
-    shifr_number:{type:DataTypes.STRING},
-    shifr_name:{type:DataTypes.STRING},
+    shifr:{type:DataTypes.STRING},
+    nameobject:{type:DataTypes.STRING},
     inn:{type:DataTypes.STRING},
     ras:{type:DataTypes.INTEGER},
     ogm_j:{type:DataTypes.INTEGER},
@@ -362,7 +362,7 @@ const NumberObjects = sequelize.define('number_objects',{
     prior:{type:DataTypes.INTEGER}
 })
 
-const Objects = sequelize.define('objects',{
+const NumberObjects = sequelize.define('number_objects',{
     id:{type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     shifr:{type:DataTypes.STRING},
     nameobject:{type:DataTypes.STRING},
